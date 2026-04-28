@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Grade__c</fullName>
+    <description>getting Grade depends on Score</description>
+    <externalId>false</externalId>
+    <formula>IF(Score__c &gt;= 90, &quot;A&quot;,
+  IF(Score__c &gt;= 80, &quot;B&quot;,
+    IF(Score__c &gt;= 70, &quot;C&quot;,
+      IF(Score__c &gt;= 60, &quot;D&quot;, &quot;F&quot;)
+    )
+  )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Grade</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>
