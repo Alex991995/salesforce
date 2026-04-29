@@ -39,7 +39,7 @@ export default class TaskList extends LightningElement {
   formattedTasks(data) {
     return data.map(task => ({
       ...task,
-      style: task.Done__c ? 'cross-text ' : 'qq'
+      style: task.Done__c ? 'cross-text ' : ''
     }));
   }
 }
