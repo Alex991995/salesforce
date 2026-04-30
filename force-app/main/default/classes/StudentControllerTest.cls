@@ -11,11 +11,10 @@ public class StudentControllerTest {
     testStudents.add(new Student__c(Name = 'Сергей Сидоров', Score__c = 60));
     insert testStudents;
   }
+
   @IsTest
-  static void testGetStudents() {
-    Test.startTest();
+  static void getStudents_Test() {
     List<Student__c> students = StudentController.getStudents();
-    Test.stopTest();
 
     for (Integer i = 0; i < students.size() - 1; i++) {
       Decimal currentScore = students[i].Score__c;
@@ -26,14 +25,14 @@ public class StudentControllerTest {
   }
 
   @IsTest
-  static void testGetTopStudents() {
+  static void getTopStudents_Test() {
     List<Student__c> students = StudentController.getTopStudents(5);
 
     for (Integer i = 0; i < students.size() - 1; i++) {
       Decimal currentScore = students[i].Score__c;
       Decimal nextScore = students[i + 1].Score__c;
-
-      Assert.isTrue(currentScore <= nextScore);
+      Assert.isTrue(currentScore >= nextScore);
     }
+    Assert.areEqual(5, students.size());
   }
 }

@@ -2,7 +2,7 @@ public with sharing class TaskController {
   @AuraEnabled(cacheable=true)
   public static List<Task__c> getTasks(String userId) {
     return [
-      SELECT Id, Name, Subject__c, Done__c, DueDate__c
+      SELECT Id, Name, Subject__c, Done__c, DueDate__c, OwnerId
       FROM Task__c
       WHERE OwnerId = :userId
     ];
@@ -11,7 +11,7 @@ public with sharing class TaskController {
   @AuraEnabled
   public static void markDone(Id taskId) {
     Task__c task = [
-      SELECT Id, Name, Subject__c, Done__c, DueDate__c
+      SELECT Id, Name, Subject__c, Done__c, DueDate__c, OwnerId
       FROM Task__c
       WHERE Id = :taskId
     ];
